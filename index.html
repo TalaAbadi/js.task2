@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form class="registerForm">
+        <label>amount</label>
+        <input type="text" name="amount" />
+        <select name="exchange">
+            <option> dollar </option>
+            <option> dinar </option>
+            <option> nis </option>
+        </select>
+        <p class="result"></p>
+        <input type="submit" value="convert" />
+    </form>
+    
+      <script>
+    const rates = {
+     dollar: 3.75,
+     dinar: 5.29,
+     nis: 1,
+    };
+    
+    const form = document.querySelector('.registerForm');
+    const resultElement = document.querySelector('.result');
+    
+    form.addEventListener('submit', (event) => {
+     event.preventDefault();
+    
+     const amount = parseFloat(event.target.amount.value);
+     const chosenCurrency = event.target.exchange.value.trim();
+    
+     const convertedAmount = amount * rates[chosenCurrency];
+    
+     resultElement.textContent = `Converted amount: ${convertedAmount.toFixed(2)} ${chosenCurrency}`;  });
+      </script>
+
+</body>
+</html>
